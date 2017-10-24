@@ -3,6 +3,7 @@
 
 import MySQLdb as mdb
 import matplotlib
+import numpy as np
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -23,6 +24,8 @@ con.close()
 
 fig, ax = plt.subplots(figsize=(6,5))
 ax.plot_date(dates, tempdata,fmt='-')
+temp_mean = [np.mean(tempdata)]*len(dates)
+ax.plot(dates,temp_mean, linestyle='--')
 ax.xaxis.set_major_formatter(DateFormatter('%H:%M'))
 
 ax.set_ylabel('Temperature F')
