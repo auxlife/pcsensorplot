@@ -14,7 +14,7 @@ dates = []
 # Read the data from db
 con = mdb.connectcon = ('DBHOST', 'DBUSER', 'DMPASS', 'DB');
 cur = con.cursor()
-cur.execute("SELECT datetime, temp  FROM readings ORDER BY `datetime` DESC limit 60")
+cur.execute("SELECT datetime, temp  FROM readings ORDER BY `datetime` DESC limit 120")
 for i in range(cur.rowcount):
     row = cur.fetchone()
     date = matplotlib.dates.date2num(row[0])
