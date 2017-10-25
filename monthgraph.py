@@ -13,7 +13,7 @@ dates = []
 # Read the data from db
 con = mdb.connectcon = ('DBHOST', 'DBUSER', 'DMPASS', 'DB');
 cur = con.cursor()
-cur.execute("SELECT datetime, temp  FROM readings WHERE MONTH(datetime) = MONTH(NOW())")
+cur.execute("SELECT datetime, temp  FROM readings WHERE datetime BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH)  AND NOW()")
 for i in range(cur.rowcount):
         row = cur.fetchone()
         date = matplotlib.dates.date2num(row[0])
@@ -23,7 +23,6 @@ con.close()
 
 fig, ax = plt.subplots(figsize=(6,5))
 ax.plot_date(dates, tempdata, fmt='-')
-ax.xaxis.set_major_formatter(DateFormatter('%m/%d/%y'))
 
 ax.set_ylabel('Temperature F')
 for label in ax.get_xticklabels():
