@@ -5,7 +5,7 @@ cronjobs - entries to add to scheduler to take readings and to update graph imag
 
 readings.sql - table structure
 
-hr/day/month/allgraph.py -  scripts to read db and creat png images to save in /var/www/html/
+hr/day/week/month/allgraph.py -  scripts to read db and creat png images to save in /var/www/html/
 
 readtemp.py - executes precompiled pcsensor application and inserts into db while saving reading to a log file
 
