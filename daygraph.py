@@ -13,7 +13,7 @@ dates = []
 # Read the data from db
 con = mdb.connectcon = ('DBHOST', 'DBUSER', 'DMPASS', 'DB');
 cur = con.cursor()
-cur.execute("SELECT datetime, temp  FROM readings WHERE MONTH(datetime) = MONTH(NOW()) AND MOD(MINUTE(datetime),2)=1 ORDER BY `datetime` DESC limit 720")
+cur.execute("SELECT datetime, temp  FROM readings WHERE datetime BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY)  AND NOW()")
 
 for i in range(cur.rowcount):
         row = cur.fetchone()
